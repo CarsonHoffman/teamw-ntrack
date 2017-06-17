@@ -20,6 +20,7 @@ shell-server@0.2.3            # Server-side component of the `meteor shell` comm
 accounts-password
 accounts-google
 google-config-ui
-twbs:bootstrap
+twbs:bootstrap@3.3.6
 fortawesome:fontawesome
 ian:accounts-ui-bootstrap-3
+mmorita:bootcardsjs

@@ -1,8 +1,10 @@
 <template name="item">
-    <div class="item">
-        <h2>{{name}}</h2>
-        <h3>Quantity consumed: {{consumedCount}}</h3>
-        <h4>{{calories}} Calories</h4>
-        <h6>Last consumed: {{lastConsumed}}</h6>
+    <div class="card">
+        <div class="card-block">
+            <h2>{{name}}</h2>
+            <h3 class="card-subtitle mb-2 text-muted">Quantity consumed: {{consumedCount}}</h3>
+            <h4>{{calories}} Calories</h4>
+            <h6>Last consumed: {{lastConsumed}}</h6>
+        </div>
     </div>
 </template>
