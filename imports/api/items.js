@@ -6,7 +6,7 @@ Meteor.methods({
     'items.new'(name, calories, quantity, userId, consumedEvent) {
         const currentItemWithName = Items.findOne({name: name});
 
-        if (currentItemWithName !== null) {
+        if (currentItemWithName !== null && currentItemWithName !== undefined) {
             const itemId = currentItemWithName._id;
             const consumesArray = currentItemWithName.consumes;
             consumesArray.push(consumedEvent);
