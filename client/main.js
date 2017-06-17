@@ -1,1 +1,1 @@
-import '../imports/ui/mainmenu';
+import '../imports/ui/mainmenu.html';
