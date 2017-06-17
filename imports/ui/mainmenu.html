@@ -37,8 +37,14 @@
             </div>
         </header>
 
-        {{#each items}}
-            {{> item}}
-        {{/each}}
+        <div class="container">
+            <div class="row">
+                {{#each items}}
+                    <div class="col-xs-3 bootcards-cards">
+                        {{> item}}
+                    </div>
+                {{/each}}
+            </div>
+        </div>
     </div>
 </body>
