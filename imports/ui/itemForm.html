@@ -1,8 +1,19 @@
 <template name="itemForm">
     <form class="new-item">
-        <input type="text" name="foodname" placeholder="Name of item" />
-        <input type="text" name="calories" placeholder="Calories in each serving" />
-        <input type="number" name="quantity" placeholder="Servings consumed" />
-        <input type="submit" class="btn btn-info" value="Submit" />
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" name="foodname" id="name"/>
+        </div>
+        <div class="form-group">
+            <label for="cal">Calories:</label>
+            <input type="text" class="form-control" name="calories" id="cal" />
+        </div>
+        <div class="form-group">
+            <label for="qty">Servings:</label>
+            <input type="number" class="form-control" name="quantity" id="qty" />
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-info" value="Submit" />
+        </div>
     </form>
 </template>
