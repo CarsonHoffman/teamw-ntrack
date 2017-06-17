@@ -27,6 +27,10 @@ Meteor.methods({
     
     'items.update'(id, name, calories) {
         Items.update(id, { $set: { name: name, calories: calories } });
+    },
+
+    'items.delete'(id) {
+        Items.remove(id);
     }
 });
 

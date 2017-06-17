@@ -54,4 +54,8 @@ Template.item.events({
 
         instance.state.set('editing', false);
     },
+
+    'click .del-btn'(event) {
+        Meteor.call('items.delete', this._id);
+    }
 });

@@ -1,6 +1,6 @@
 <template name="item">
-    <div class="panel panel-default bootcards-richtext">
-        <div class="panel-body">
+    <div class="panel panel-default bootcards-richtext" style="min-height: 10; max-height: 10;">
+        <div class="panel-body" style="min-height: 10; max-height: 10;">
             {{#if editing}}
                 <form class="update-item">
                     <div class="form-group">
@@ -12,12 +12,12 @@
                         <input type="text" class="form-control" name="calories" id="cal" value={{calories}} />
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-info update-btn" value="Update" />
+                        <input type="submit" class="btn btn-info update-btn" value="Update" /> <button type="button" class="btn btn-danger del-btn">Delete</button>
                     </div>
                 </form>
             {{else}}
+                <h1>{{name}}</h1>
                 <button type="button" class="btn btn-warning pull-right edit-btn"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
-                <h3>{{name}}</h3>
                 <h4 class="card-subtitle mb-2 text-muted">Quantity consumed: {{consumedCount}}</h4>
                 <h5>{{calories}} Calories</h5>
                 <h6>Last consumed: {{lastConsumed}}</h6>
