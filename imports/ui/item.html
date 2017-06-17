@@ -1,10 +1,27 @@
 <template name="item">
     <div class="panel panel-default bootcards-richtext">
         <div class="panel-body">
-            <h2>{{name}}</h2>
-            <h3 class="card-subtitle mb-2 text-muted">Quantity consumed: {{consumedCount}}</h3>
-            <h4>{{calories}} Calories</h4>
-            <h6>Last consumed: {{lastConsumed}}</h6>
+            {{#if editing}}
+                <form class="update-item">
+                    <div class="form-group">
+                        <label for="name">Name of Food:</label>
+                        <input type="text" class="form-control" name="foodname" id="name" value="{{name}}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="cal">Calories per Serving:</label>
+                        <input type="text" class="form-control" name="calories" id="cal" value={{calories}} />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-info update-btn" value="Update" />
+                    </div>
+                </form>
+            {{else}}
+                <button type="button" class="btn btn-warning pull-right edit-btn"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+                <h3>{{name}}</h3>
+                <h4 class="card-subtitle mb-2 text-muted">Quantity consumed: {{consumedCount}}</h4>
+                <h5>{{calories}} Calories</h5>
+                <h6>Last consumed: {{lastConsumed}}</h6>
+            {{/if}}
         </div>
     </div>
 </template>

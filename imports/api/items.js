@@ -23,6 +23,10 @@ Meteor.methods({
                 consumes: consumes
             });
         }
+    },
+    
+    'items.update'(id, name, calories) {
+        Items.update(id, { $set: { name: name, calories: calories } });
     }
 });
 

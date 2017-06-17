@@ -1,6 +1,13 @@
+import { Meteor } from 'meteor/meteor';
 import { Items } from '../api/items.js';
+import { ReactiveDict } from 'meteor/reactive-dict';
 
+import '../api/items.js';
 import './item.html';
+
+Template.item.onCreated(function() {
+    this.state = new ReactiveDict();
+});
 
 Template.item.helpers({
     /**
@@ -17,5 +24,34 @@ Template.item.helpers({
             }, this);
         }
         return totalConsumedCount;
+    },
+
+    editing() {
+        const instance = Template.instance();
+        return instance.state.get('editing');
     }
+});
+
+Template.item.events({
+    'click .edit-btn'(event) {
+        const instance = Template.instance();
+        instance.state.set('editing', true);
+    },
+
+    'submit .update-item'(event) {
+        event.preventDefault();
+
+        const instance = Template.instance();
+
+        const form = event.target;
+
+        const name = form.foodname.value;
+        const calories = form.calories.value;
+
+        console.log(calories);
+
+        Meteor.call('items.update', this._id, name, calories);
+
+        instance.state.set('editing', false);
+    },
 });
