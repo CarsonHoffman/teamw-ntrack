@@ -15,8 +15,8 @@ Template.itemForm.events({
         const form = event.target;
 
         const name = form.foodname.value;
-        const calories = form.calories.value;
-        const quantity = form.quantity.value;
+        const calories = Number(form.calories.value);
+        const quantity = Number(form.quantity.value);
         const userId = Meteor.userId();
 
         const consumedEvent = {
@@ -30,6 +30,6 @@ Template.itemForm.events({
         form.calories.value = "";
         form.quantity.value = "";
 
-        console.log("submitted");
+        console.log(userId);
     },
 });
