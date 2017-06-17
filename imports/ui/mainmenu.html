@@ -1,9 +1,24 @@
-<body>
+<body style="padding-top: 75px;">
     <div class="container">
         <header>
-            <h1>NTrack</h1>
-
-            {{> loginButtons}}
+            <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">nTrack</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            {{ > loginButtons }}
+                        </ul>
+                    </div><!-- /.nav-collapse -->
+                </div><!-- /.container -->
+            </div>
         </header>
 
         {{#if currentUser}}

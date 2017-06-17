@@ -10,7 +10,7 @@ Meteor.methods({
             const itemId = currentItemWithName._id;
             const consumesArray = currentItemWithName.consumes;
             consumesArray.push(consumedEvent);
-            Items.update(itemId, { $set: { consumes: consumesArray } });
+            Items.update(itemId, { $set: { consumes: consumesArray, lastConsumed: consumedEvent.time } });
         }
         else {
             const consumes = [consumedEvent];
@@ -19,6 +19,7 @@ Meteor.methods({
                 name: name,
                 calories: calories,
                 userId: userId,
+                lastConsumed: consumedEvent.time,
                 consumes: consumes
             });
         }
