@@ -5,5 +5,13 @@
 
             {{> loginButtons}}
         </header>
+
+        {{#if currentUser}}
+            {{> itemForm}}
+        {{/if}}
+
+        {{#each items}}
+            {{> item}}
+        {{/each}}
     </div>
 </body>
