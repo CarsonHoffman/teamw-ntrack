@@ -3,7 +3,7 @@ import { Items } from '../api/items.js';
 
 import './item.js';
 import './mainmenu.html';
-
+import './mainmenu.css';
 Template.body.onCreated(function() {
     Meteor.subscribe('items');
 });
