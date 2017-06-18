@@ -12,15 +12,25 @@
                         <input type="text" class="form-control" name="calories" id="cal" value={{calories}} />
                     </div>
                     <div class="form-group">
+                    <label for="sel1">Meal:</label>
+                    <select class="form-control" id="sel1" name="meal">
+                        <option>Breakfast</option>
+                        <option>Lunch</option>
+                        <option>Dinner</option>
+                        <option>Snack</option>
+                    </select>
+                    </div>
+                    <div class="form-group">
                         <input type="submit" class="btn btn-info update-btn" value="Update" /> <button type="button" class="btn btn-danger del-btn">Delete</button>
                     </div>
                 </form>
             {{else}}
-                <h1>{{name}}</h1>
+                <h1><strong>{{name}}</strong></h1>
                 <button type="button" class="btn btn-warning pull-right edit-btn"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
-                <h4 class="card-subtitle mb-2 text-muted">Quantity consumed: {{consumedCount}}</h4>
+                <h3>{{meal}}</h3>
+                <h4 class="card-subtitle mb-2 text-muted">Servings consumed: <strong>{{consumedCount}}</strong></h4>
                 <h5>{{calories}} Calories</h5>
-                <h6>Last consumed: {{lastConsumed}}</h6>
+                <h6>Consume time: {{lastConsumed}}</h6>
             {{/if}}
         </div>
     </div>

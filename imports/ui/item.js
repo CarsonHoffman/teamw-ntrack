@@ -16,13 +16,10 @@ Template.item.helpers({
      * @returns Amount of consumed
      */
     consumedCount() {
-        const thisItem = Items.findOne(this._id);
         var totalConsumedCount = 0;
-        if (thisItem !== "undefined") {
-            thisItem.consumes.forEach(function(element) {
-                totalConsumedCount += element.quantity;
-            }, this);
-        }
+        this.consumes.forEach(function(element) {
+            totalConsumedCount += element.quantity;
+        }, this);
         return totalConsumedCount;
     },
 
@@ -42,7 +39,7 @@ Template.item.helpers({
         // console.log(finalString);
         // return finalString;
 
-        return lerpColor('#00ff00', '#ff0000', this.calories / 1000);
+        return lerpColor('#77ff72', '#ff6868', (this.calories * this.consumes[0].quantity) / 1250);
 
         //return "rgb(" + r + ", " + g + ",0)";
     }
@@ -63,10 +60,11 @@ Template.item.events({
 
         const name = form.foodname.value;
         const calories = form.calories.value;
+        const meal = form.meal.value;
 
         console.log(calories);
 
-        Meteor.call('items.update', this._id, name, calories);
+        Meteor.call('items.update', this._id, name, calories, meal);
 
         instance.state.set('editing', false);
     },

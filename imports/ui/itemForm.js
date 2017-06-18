@@ -17,6 +17,7 @@ Template.itemForm.events({
         const name = form.foodname.value;
         const calories = Number(form.calories.value);
         const quantity = Number(form.quantity.value);
+        const meal = form.meal.value;
         const userId = Meteor.userId();
 
         const consumedEvent = {
@@ -24,7 +25,7 @@ Template.itemForm.events({
             time: new Date()
         };
 
-        Meteor.call('items.new', name, calories, quantity, userId, consumedEvent);
+        Meteor.call('items.new', name, calories, quantity, meal, userId, consumedEvent);
 
         form.foodname.value = "";
         form.calories.value = "";

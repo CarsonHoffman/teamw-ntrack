@@ -3,7 +3,7 @@ import { Mongo } from 'meteor/mongo';
 export const Items = new Mongo.Collection('items');
 
 Meteor.methods({
-    'items.new'(name, calories, quantity, userId, consumedEvent) {
+    'items.new'(name, calories, quantity, meal, userId, consumedEvent) {
         const currentItemWithName = Items.findOne({name: name});
 
         // if (currentItemWithName !== null && currentItemWithName !== undefined) {
@@ -18,6 +18,7 @@ Meteor.methods({
             Items.insert({
                 name: name,
                 calories: calories,
+                meal: meal,
                 userId: userId,
                 lastConsumed: consumedEvent.time,
                 consumes: consumes
@@ -25,8 +26,8 @@ Meteor.methods({
         //}
     },
     
-    'items.update'(id, name, calories) {
-        Items.update(id, { $set: { name: name, calories: calories } });
+    'items.update'(id, name, calories, meal) {
+        Items.update(id, { $set: { name: name, calories: calories, meal: meal } });
     },
 
     'items.delete'(id) {
