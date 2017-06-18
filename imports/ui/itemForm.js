@@ -15,6 +15,7 @@ Template.itemForm.events({
         const form = event.target;
 
         const name = form.foodname.value;
+        check(name, String);
         const calories = Number(form.calories.value);
         const quantity = Number(form.quantity.value);
         const meal = form.meal.value;

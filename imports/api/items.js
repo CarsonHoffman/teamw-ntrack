@@ -13,24 +13,36 @@ Meteor.methods({
         //     Items.update(itemId, { $set: { consumes: consumesArray, lastConsumed: consumedEvent.time } });
         // }
         // else {
-            const consumes = [consumedEvent];
+        if (!Meteor.user()) {
+            throw new Meteor.Error("Not authorized");
+        }
 
-            Items.insert({
-                name: name,
-                calories: calories,
-                meal: meal,
-                userId: userId,
-                lastConsumed: consumedEvent.time,
-                consumes: consumes
-            });
+        const consumes = [consumedEvent];
+
+        Items.insert({
+            name: name,
+            calories: calories,
+            meal: meal,
+            userId: userId,
+            lastConsumed: consumedEvent.time,
+            consumes: consumes
+        });
         //}
     },
     
     'items.update'(id, name, calories, meal) {
+        const Item = Items.findOne(id);
+        if (Meteor.userId() !== Item.userId) {
+            throw new Meteor.Error("Not authorized");
+        }
         Items.update(id, { $set: { name: name, calories: calories, meal: meal } });
     },
 
     'items.delete'(id) {
+        const Item = Items.findOne(id);
+        if (Meteor.userId() !== Item.userId) {
+            throw new Meteor.Error("Not authorized");
+        }
         Items.remove(id);
     }
 });
