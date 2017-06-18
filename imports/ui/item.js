@@ -29,6 +29,22 @@ Template.item.helpers({
     editing() {
         const instance = Template.instance();
         return instance.state.get('editing');
+    },
+
+    color() {
+        const r = this.calories * (255/1000);
+        const g = 255 - this.calories * (255/1000);
+
+        console.log(r + " " + g);
+
+        // var decColor =0x1000000 + r + 0x100 * g + 0x10000 * 0 ;
+        // var finalString = '#'+ (decColor.toString(16)).substr(0,6);
+        // console.log(finalString);
+        // return finalString;
+
+        return lerpColor('#00ff00', '#ff0000', this.calories / 1000);
+
+        //return "rgb(" + r + ", " + g + ",0)";
     }
 });
 
@@ -59,3 +75,16 @@ Template.item.events({
         Meteor.call('items.delete', this._id);
     }
 });
+
+function lerpColor(a, b, amount) { 
+
+    var ah = parseInt(a.replace(/#/g, ''), 16),
+        ar = ah >> 16, ag = ah >> 8 & 0xff, ab = ah & 0xff,
+        bh = parseInt(b.replace(/#/g, ''), 16),
+        br = bh >> 16, bg = bh >> 8 & 0xff, bb = bh & 0xff,
+        rr = ar + amount * (br - ar),
+        rg = ag + amount * (bg - ag),
+        rb = ab + amount * (bb - ab);
+
+    return '#' + ((1 << 24) + (rr << 16) + (rg << 8) + rb | 0).toString(16).slice(1);
+}
