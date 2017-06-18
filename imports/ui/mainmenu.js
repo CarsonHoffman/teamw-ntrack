@@ -10,7 +10,7 @@ Template.body.onCreated(function() {
 
 Template.body.helpers({
     items() {
-        return Items.find({});
+        return Items.find({}, {sort: {lastConsumed: -1}});
     },
 });
 
