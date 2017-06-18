@@ -6,13 +6,13 @@ Meteor.methods({
     'items.new'(name, calories, quantity, userId, consumedEvent) {
         const currentItemWithName = Items.findOne({name: name});
 
-        if (currentItemWithName !== null && currentItemWithName !== undefined) {
-            const itemId = currentItemWithName._id;
-            const consumesArray = currentItemWithName.consumes;
-            consumesArray.push(consumedEvent);
-            Items.update(itemId, { $set: { consumes: consumesArray, lastConsumed: consumedEvent.time } });
-        }
-        else {
+        // if (currentItemWithName !== null && currentItemWithName !== undefined) {
+        //     const itemId = currentItemWithName._id;
+        //     const consumesArray = currentItemWithName.consumes;
+        //     consumesArray.push(consumedEvent);
+        //     Items.update(itemId, { $set: { consumes: consumesArray, lastConsumed: consumedEvent.time } });
+        // }
+        // else {
             const consumes = [consumedEvent];
 
             Items.insert({
@@ -22,7 +22,7 @@ Meteor.methods({
                 lastConsumed: consumedEvent.time,
                 consumes: consumes
             });
-        }
+        //}
     },
     
     'items.update'(id, name, calories) {
