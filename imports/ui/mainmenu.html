@@ -44,6 +44,11 @@
             </div>
         </header>
 
+        {{#unless currentUser}}
+            <h1>nTrack</h1>
+            <h3>This website serves as a simple alternative to the multitude of super complicated calorie trackers on the market. Simply add a food in the top right corner after signing in, and you'll be able to see your last eaten food in a very simple manner. The more calories in the food, the redder the card becomes.</h3>
+        {{/unless}}
+
         <div class="container">
             <div class="row">
                 {{#each items}}
